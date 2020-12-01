@@ -60,3 +60,43 @@ const exception = require('../com.quantityMeasurment/exceptionType')
             return expect(isEqual).resolves.toBe(true)
         })
     })
+
+    describe('Testing YARD', () => {
+        test('ProvideLengthAs3_WhenConverted_ShouldReturnTrue', () =>{
+            const firstValue = new Quantity(length.FOOT, 3);
+            const secondValue = new Quantity(length.YARD, 1)
+            const isEqual = firstValue.compare(secondValue);
+
+            return expect(isEqual).resolves.toBe(true);
+        })
+        test('ProvideLength_WhenNotEqual_ShouldReturnFalse', () => {
+            const firstValue = new Quantity(length.FOOT, 1);
+            const secondValue = new Quantity(length.YARD, 1);
+            const isEqual = firstValue.compare(secondValue);
+            return expect(isEqual).resolves.toBe(false);
+        })
+        test('ProvideTwoLength_WhenNotEqual_ShouldReturnFalse', () => {
+            const firstValue = new Quantity(length.INCH, 1);
+            const secondValue = new Quantity(length.YARD, 1);
+            const isEqual = firstValue.compare(secondValue);
+            return expect(isEqual).resolves.toBe(false);
+        })
+        test('ProvideTwoLength_WhenEquals_ShouldReturnTrue', () => {
+            const firstValue = new Quantity(length.YARD, 1);
+            const secondValue = new Quantity(length.INCH, 36);
+            const isEqual = firstValue.compare(secondValue);
+            expect(isEqual).resolves.toBe(true);
+        })
+        test('ProvideTwoLength_WhenBothEquals_ShouldReturnTrue', () => {
+            const firstValue = new Quantity(length.INCH, 36);
+            const secondValue = new Quantity(length.YARD, 1);
+            const isEqual = firstValue.compare(secondValue);
+            expect(isEqual).resolves.toBe(true);
+        })
+        test('ProvideTwoLength_WhenEqualAfterConvert_ShouldReturnTrue', () => {
+            const firstValue = new Quantity(length.YARD, 1);
+            const secondValue = new Quantity(length.FOOT, 3);
+            const isEqual = firstValue.compare(secondValue);
+            expect(isEqual).resolves.toBe(true);
+        })
+    })
