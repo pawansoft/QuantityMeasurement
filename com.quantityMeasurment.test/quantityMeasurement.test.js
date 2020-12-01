@@ -32,3 +32,31 @@ const exception = require('../com.quantityMeasurment/exceptionType')
         });       
          
     });
+
+    describe('Tescases for inch',() => {
+        test('ProvideInches_WhenRefrenceMisMatch_ShouldReturnTrue', () =>{
+            const firstValue = new Quantity(length.INCH, 24);
+            const secondValue = new Quantity(length.INCH, 24);
+            const isRefSame = firstValue instanceof Quantity && secondValue instanceof Quantity;
+
+            return expect(isRefSame).toBe(true);
+        })
+        test('ProvideLengthINch_whenFoundNull_ShouldThrowError', () =>{
+            const firstValue = new Quantity(length.INCH, null);
+            const secondValue = new Quantity(length.INCH, null);
+            const foundExcep = firstValue.compare(secondValue);
+            expect(foundExcep).rejects.toThrow(exception.NULL_POINTER);
+        })
+        test('ProvideLengthInInch_WhenValueMatches_ShouldReturnTrue', () => {
+            const firstValue = new Quantity(length.INCH, 0);
+            const secondValue = new Quantity(length.INCH, 0);
+            const isEqual = firstValue.compare(secondValue);
+            return expect(isEqual).resolves.toBe(true)
+        })
+        test('ProvideLengthInInch_WhenValueMatches_ShouldReturnTrue', () => {
+            const firstValue = new Quantity(length.INCH, 20);
+            const secondValue = new Quantity(length.INCH, 20);
+            const isEqual = firstValue.compare(secondValue);
+            return expect(isEqual).resolves.toBe(true)
+        })
+    })
