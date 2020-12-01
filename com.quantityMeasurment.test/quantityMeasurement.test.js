@@ -167,3 +167,28 @@ const exception = require('../com.quantityMeasurment/exceptionType')
             return expect(sumOfUnit).resolves.toEqual(2)
         })
     })
+    
+    describe('GramMeasurmentTest',() => {
+       test('Provide1Kg1000Gram_WhenCompare_ShouldReturnTrue', () => {
+        const firstValue = new Quantity(length.KILOGRAM, 1);
+        const secondValue = new Quantity(length.GRAM, 1000);
+        const isEqual = firstValue.compare(secondValue);
+        return expect(isEqual).resolves.toEqual(true)
+
+       })
+
+       test('Provide1Tonne1000Kg_WhenCompare_ShouldReturnTrue', () => {
+        const firstValue = new Quantity(length.TONNE, 1);
+        const secondValue = new Quantity(length.KILOGRAM, 1000);
+        const isEqual = firstValue.compare(secondValue);
+        return expect(isEqual).resolves.toEqual(true)
+       })
+
+       test('Provide1Tone1000Gm_WhenAdded_ShouldReturn1001Kg', () => {
+        const firstValue = new Quantity(length.TONNE, 1);
+        const secondValue = new Quantity(length.GRAM, 1000);
+        const sumOfUnit = firstValue.addQuantity(secondValue, length.KILOGRAM);
+        return expect(sumOfUnit).resolves.toEqual(1001)
+       })
+        
+    })

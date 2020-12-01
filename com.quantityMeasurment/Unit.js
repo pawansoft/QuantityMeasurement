@@ -5,7 +5,10 @@ const length = {
         CM : 1,
         GALLON : 3.78,
         LITER : 1,
-        MILLI_LITER: 0.001
+        MILLI_LITER: 0.001,
+        KILOGRAM: 1,
+        GRAM: 0.001,
+        TONNE: 1000
     }
 
 module.exports = length;
