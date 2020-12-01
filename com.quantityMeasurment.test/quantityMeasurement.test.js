@@ -192,3 +192,12 @@ const exception = require('../com.quantityMeasurment/exceptionType')
        })
         
     })
+
+    describe('Temperature_Test',() => {
+        test('Provide212Fand100c_ whenCompared_ShouldReturnTrue', () => {
+            const firstValue = new Quantity(length.FARENHEIT, 212);
+            const secondValue = new Quantity(length.CELCIUS, 100);
+            const isEqual = firstValue.compare(secondValue);
+            return expect(isEqual).resolves.toEqual(true)
+        })
+    })

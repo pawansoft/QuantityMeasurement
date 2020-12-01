@@ -8,7 +8,9 @@ const length = {
         MILLI_LITER: 0.001,
         KILOGRAM: 1,
         GRAM: 0.001,
-        TONNE: 1000
+        TONNE: 1000,
+        CELCIUS : 1,
+        FARENHEIT : 32
     }
 
 module.exports = length;

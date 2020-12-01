@@ -7,6 +7,9 @@ class Quantity{
         this.value = value;
     }
     convert(unit, value){
+        if(unit == 32){
+            return ( value - unit) * 5 / 9;
+        } 
         return unit * value;   
     }
     
