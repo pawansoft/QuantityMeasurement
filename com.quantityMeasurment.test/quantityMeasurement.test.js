@@ -136,3 +136,19 @@ const exception = require('../com.quantityMeasurment/exceptionType')
             return expect(sumOfUnit).resolves.toEqual(3);
         })
     })
+
+    describe('literToGallonTest',() => {
+        test('Provide1Gallon_WhenConvertedToLiter_ShouldReturn3.78Liter', () => {
+            const firstValue = new Quantity(length.GALLON, 1);
+            const secondValue = new Quantity(length.LITER, 3.78);
+            const isEqual = firstValue.compare(secondValue);
+            return expect(isEqual).resolves.toEqual(true)
+        })
+
+        test('Provide1LiterAnd1000Ml_WhenCompareTheUnit_ShouldReturnTrue', () => {
+            const firstValue = new Quantity(length.MILLI_LITER, 1000);
+            const secondValue = new Quantity(length.LITER, 1);
+            const isEqual = firstValue.compare(secondValue);
+            return expect(isEqual).resolves.toEqual(true)
+        })
+    })
