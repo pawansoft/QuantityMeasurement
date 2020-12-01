@@ -109,3 +109,30 @@ const exception = require('../com.quantityMeasurment/exceptionType')
             return expect(isEqual).resolves.toEqual(true);
         })
     })
+
+    describe('Adding Units', () => {
+        test('ProvideNumber2,2_WhenAdded_ShouldReturn4Inch', () => {
+            const firstValue = new Quantity(length.INCH, 2);
+            const secondValue = new Quantity(length.INCH, 2);
+            const sumOfUnit = firstValue.addQuantity(secondValue, length.INCH);
+            return expect(sumOfUnit).resolves.toEqual(4);
+        })
+        test('Provide1FeetAnd2Inch_WhenSumIt_ShouldReturn14Inch', () => {
+            const firstValue = new Quantity(length.FOOT, 1);
+            const secondValue = new Quantity(length.INCH, 2);
+            const sumOfUnit = firstValue.addQuantity(secondValue, length.INCH);
+            return expect(sumOfUnit).resolves.toEqual(14);
+        })
+        test('Provide1Feet1Feet_WhenSumTheUnit_ShouldReturn24Inch', () => {
+            const firstValue = new Quantity(length.FOOT, 1);
+            const secondValue = new Quantity(length.FOOT, 1);
+            const sumOfUnit = firstValue.addQuantity(secondValue, length.INCH);
+            return expect(sumOfUnit).resolves.toEqual(24);
+        })
+        test('Provide2Inch2.2Cm_WhenSumUnits_ShouldReturn3Inch', () => {
+            const firstValue = new Quantity(length.INCH, 2);
+            const secondValue = new Quantity(length.CM, 2.5);
+            const sumOfUnit = firstValue.addQuantity(secondValue, length.INCH);
+            return expect(sumOfUnit).resolves.toEqual(3);
+        })
+    })

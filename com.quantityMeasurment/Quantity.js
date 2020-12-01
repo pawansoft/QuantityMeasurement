@@ -27,6 +27,14 @@ class Quantity{
             }
         })
     }
+
+    addQuantity(that, expectedUnit){
+        return new Promise((resolve, rejects) => {
+            const firstValue = this.convert(this.unit, this.value);
+            const secondValue = this.convert(that.unit, that.value);
+            resolve((firstValue + secondValue)/expectedUnit)
+        })
+    }
 }
 
 module.exports = Quantity;
