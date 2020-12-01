@@ -152,3 +152,18 @@ const exception = require('../com.quantityMeasurment/exceptionType')
             return expect(isEqual).resolves.toEqual(true)
         })
     })
+
+    describe('Adding_LiterMeasurment_Test', () => {
+        test('Provide1Gallon3.78Liter_WhenUnitAdded_ShouldReturn7.56Liter', () => {
+            const firstValue = new Quantity(length.GALLON, 1);
+            const secondValue = new Quantity(length.LITER, 3.78);
+            const sumOfUnit = firstValue.addQuantity(secondValue, length.LITER);
+            return expect(sumOfUnit).resolves.toEqual(7.56)
+        })
+        test('Provide1Liter1000ML_WhenAdded_ShouldReturn2Liter', () => {
+            const firstValue = new Quantity(length.LITER, 1);
+            const secondValue = new Quantity(length.MILLI_LITER, 1000);
+            const sumOfUnit = firstValue.addQuantity(secondValue, length.LITER);
+            return expect(sumOfUnit).resolves.toEqual(2)
+        })
+    })
