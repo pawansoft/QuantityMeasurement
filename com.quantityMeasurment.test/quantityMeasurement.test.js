@@ -13,7 +13,7 @@ const exception = require('../com.quantityMeasurment/exceptionType')
         test('ProvideLength_WhenFootConvertedInINch_ShouldCompareTwoValue', () =>{
                 const firstValue = new Quantity(length.INCH, 12);
                 const secondValue = new Quantity(length.FOOT, 1)
-                return expect(firstValue.compare(secondValue)).resolves.toBe(true); 
+                return expect(firstValue.compare(secondValue)).resolves.toEqual(true); 
             });
         
         test('ProvideLengthAsNull_WhenFootConvertedInINch_ShouldThrowNullException', () =>{
@@ -57,7 +57,7 @@ const exception = require('../com.quantityMeasurment/exceptionType')
             const firstValue = new Quantity(length.INCH, 20);
             const secondValue = new Quantity(length.INCH, 20);
             const isEqual = firstValue.compare(secondValue);
-            return expect(isEqual).resolves.toBe(true)
+            return expect(isEqual).resolves.toEqual(true)
         })
     })
 
@@ -67,13 +67,13 @@ const exception = require('../com.quantityMeasurment/exceptionType')
             const secondValue = new Quantity(length.YARD, 1)
             const isEqual = firstValue.compare(secondValue);
 
-            return expect(isEqual).resolves.toBe(true);
+            return expect(isEqual).resolves.toEqual(true);
         })
         test('ProvideLength_WhenNotEqual_ShouldReturnFalse', () => {
             const firstValue = new Quantity(length.FOOT, 1);
             const secondValue = new Quantity(length.YARD, 1);
             const isEqual = firstValue.compare(secondValue);
-            return expect(isEqual).resolves.toBe(false);
+            return expect(isEqual).resolves.toEqual(false);
         })
         test('ProvideTwoLength_WhenNotEqual_ShouldReturnFalse', () => {
             const firstValue = new Quantity(length.INCH, 1);
@@ -85,18 +85,27 @@ const exception = require('../com.quantityMeasurment/exceptionType')
             const firstValue = new Quantity(length.YARD, 1);
             const secondValue = new Quantity(length.INCH, 36);
             const isEqual = firstValue.compare(secondValue);
-            expect(isEqual).resolves.toBe(true);
+            expect(isEqual).resolves.toEqual(true);
         })
         test('ProvideTwoLength_WhenBothEquals_ShouldReturnTrue', () => {
             const firstValue = new Quantity(length.INCH, 36);
             const secondValue = new Quantity(length.YARD, 1);
             const isEqual = firstValue.compare(secondValue);
-            expect(isEqual).resolves.toBe(true);
+            expect(isEqual).resolves.toEqual(true);
         })
         test('ProvideTwoLength_WhenEqualAfterConvert_ShouldReturnTrue', () => {
             const firstValue = new Quantity(length.YARD, 1);
             const secondValue = new Quantity(length.FOOT, 3);
             const isEqual = firstValue.compare(secondValue);
-            expect(isEqual).resolves.toBe(true);
+            expect(isEqual).resolves.toEqual(true);
+        })
+    })
+
+    describe('TestInchToCM', () => {
+        test('ProvideLengthInCMOrInch_WhenMatches_ShouldReturnTrue', () => {
+            const firstValue = new Quantity(length.INCH, 2);
+            const secondValue = new Quantity(length.CM, 5);
+            const isEqual = firstValue.compare(secondValue);
+            return expect(isEqual).resolves.toEqual(true);
         })
     })

@@ -25,7 +25,6 @@ class Quantity{
                 rejects( new quantityMeasurmentException('Null or undefined', exceptionType.NULL_POINTER))
                     
             }
-
         })
     }
 }
